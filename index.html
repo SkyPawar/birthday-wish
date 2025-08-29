@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="effectContainer"></div>
+  <div class="container">
+    <div class="gift-box" onclick="openNamePopup()">
+      🎁
+    </div>
+    <h3>Open the Box, Cutie..:3</h3>
+  </div>
+
+  <!-- Name Popup -->
+  <div class="popup" id="namePopup">
+    <h2>What's your beautiful name?</h2>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <button onclick="showBirthdayWish()">Submit</button>
+  </div>
+
+
+
+  <!-- Birthday Message -->
+  <div class="popup" id="wishPopup">
+    <h2 id="birthdayTitle"></h2>
+    <p class="emoji">🎉</p>
+
+    <div id="quote-box" class="quote-text"></div>
+
+    <button onclick="showEmojiOptions()">Take Next Step</button>
+  </div>
+
+  <!-- Emoji Selection -->
+  <div class="popup" id="emojiPopup">
+    <h3>Choose a surprise!</h3>
+    <div class="icons">
+      <span onclick="showQuote('🎁')">🎁</span>
+      <span onclick="showQuote('🎂')">🎂</span>
+      <span onclick="showQuote('❤️')">❤️</span>
+      <span onclick="showQuote('😊')">😊</span>
+    </div>
+    <div id="quoteBox"></div>
+    <button onclick="showFinalStep()">Next</button>
+  </div>
+
+  <!-- Celebrate Option -->
+  <div class="popup" id="celebratePopup">
+    <p id="celebrateText"></p>
+    <p>How about we celebrate your birthday in style?</p>
+    <button onclick="finalSurprise()">Absolutely, let's celebrate!</button>
+    <button onclick="alert('Maybe next time 😊')">Maybe another time</button>
+  </div>
+
+  <!-- Final Animation -->
+  <div class="popup" id="finalPopup">
+    <h2>Yay!</h2>
+    <p>And here comes another birthday surprise for you!</p>
+    <button onclick="showImages()">OK</button>
+  </div>
+
+  <!-- Final Image Gallery -->
+  <div class="camera-roll" id="gallery">
+    <div class="roll-track">
+      <img src="images/pc1.jpg" alt="pic1" />
+      <img src="images/pc2.jpg" alt="pic2" />
+      <img src="images/pc3.jpg" alt="pic3" />
+      <img src="images/pc4.jpg" alt="pic4" />
+      <img src="images/pc5.jpg" alt="pic5" />
+      <img src="images/pc6.jpg" alt="pic6" />
+      <!-- Duplicate for smooth infinite scroll -->
+      <img src="images/pc1.jpg" alt="pic1" />
+      <img src="images/pc2.jpg" alt="pic2" />
+      <img src="images/pc3.jpg" alt="pic3" />
+      <img src="images/pc4.jpg" alt="pic4" />
+      <img src="images/pc5.jpg" alt="pic5" />
+      <img src="images/pc6.jpg" alt="pic6" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+  </script>
+
+  <script>
+    const quotes = [
+      "Happy Birthday Miss Jayshree Jain🎂 — I know my wish not as important as your new world, but still your smile matters.❤️",
+      "May your special day be as beautiful as your heart.💕 — Happy Birthday!🎂",
+      "Wishing you a year so bright, even the stars look dim next to your shine.🌟 — Cheers to many more!💖"
+    ];
+
+    let quoteIndex = 0;
+    const quoteBox = document.getElementById('quote-box');
+
+    function showQuotes() {
+      quoteBox.classList.remove('show'); // fade out
+      setTimeout(() => {
+        quoteBox.textContent = quotes[quoteIndex];
+        quoteBox.classList.add('show'); // fade in
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+      }, 1000);
+    }
+
+    function startQuotes() {
+      showQuotes(); // show first quote immediately
+      setInterval(showQuotes, 4000); // rotate every 4 seconds
+    }
+
+    // Modify your name submit function to also start quotes:
+    function showBirthdayWish() {
+      const name = document.getElementById('username').value.trim();
+      if (!name) return alert("Please enter your name 😊");
+
+      document.getElementById('namePopup').style.display = 'none';
+      document.getElementById('wishPopup').style.display = 'block';
+      document.getElementById('birthdayTitle').textContent = `Happy Birthday, ${name}!`;
+
+      startQuotes(); // start rotating quotes now
+    }
+  </script>
+
+</body>
+
+</html>
