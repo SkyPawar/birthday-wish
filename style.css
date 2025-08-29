@@ -220,3 +220,98 @@ body {
 .slideshow-quote.active {
   opacity: 1;
 }
+
+/* 📱 Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  }
+
+  .gift-box {
+    font-size: 70px; /* smaller gift size */
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .popup {
+    width: 90%;
+    top: 15%;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .popup h2, 
+  .popup h3 {
+    font-size: 20px;
+  }
+
+  .popup input {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  .popup button {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .icons span {
+    font-size: 30px;
+    margin: 8px;
+  }
+
+  .quote-text {
+    font-size: 16px;
+    padding: 10px;
+    min-height: 50px;
+  }
+
+  /* Camera Roll */
+  .roll-track img {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #ff4d6d;
+  }
+
+  /* Slideshow */
+  .slideshow img {
+    max-width: 95%;
+    max-height: 60%;
+  }
+
+  .slideshow-quote {
+    font-size: 18px;
+    padding: 10px;
+    bottom: 8%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gift-box {
+    font-size: 60px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .popup {
+    top: 10%;
+    font-size: 14px;
+  }
+
+  .popup button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .slideshow-quote {
+    font-size: 16px;
+    line-height: 1.3;
+    padding: 8px;
+  }
+}
